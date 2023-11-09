@@ -1,4 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRolesStore } from '@/stores/roles'
+import { onMounted } from 'vue'
+
+const roles = useRolesStore()
+
+onMounted(() => {
+  console.log(roles)
+})
+</script>
 
 <template>
   <main>
