@@ -6,14 +6,14 @@ const props = defineProps<{
   role: Role
 }>()
 
-const { name, type, description, users, created_on, modified_on, active, editable } = props.role
+const { name, type, description, users, created_on, modified_on, active, editable, id } = props.role
 </script>
 
 <template>
   <div class="card">
     <div class="content">
       <div v-if="active" class="inactive-bagde">inactive</div>
-      <h3>{{ name }}</h3>
+      <h2>{{ name }}</h2>
       <span>{{ type }}</span>
 
       <p class="description">{{ description }}</p>
@@ -31,7 +31,9 @@ const { name, type, description, users, created_on, modified_on, active, editabl
       <span v-if="editable"> Last update: {{ toLocalDate(modified_on) }}</span>
       <span v-else> Date created: {{ toLocalDate(created_on) }}</span>
       <div v-if="editable" class="buttons">
-        <button>edit</button>
+        <RouterLink :to="`/${id}`">
+          <button>edit</button>
+        </RouterLink>
         <button>delete</button>
       </div>
       <svg v-else xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">

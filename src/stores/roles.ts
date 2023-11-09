@@ -172,7 +172,13 @@ export const useRolesStore = defineStore('roles', () => {
       "modified_on": "2019-01-18T18:25:43.511Z"
     }
   ])
+
+  const search = (searchQuery: string) => {
+    return roles.value.filter((role) =>
+          role.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+  }
   
 
-  return { roles }
+  return { roles, search }
 })
